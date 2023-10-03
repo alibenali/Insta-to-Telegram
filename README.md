@@ -1,38 +1,53 @@
-# Instagram to Telegram Media Sender
+# Instagram to Telegram Media Copier
 
 ![Project Logo](https://independent.ng/wp-content/uploads/2017/12/Telegram-and-Instagram.jpg)
 
-Instagram to Telegram Media Sender is a Python-based tool that automates the process of sharing media content from Instagram to Telegram. This tool utilizes the Instagram API to fetch media (images and videos) from specified Instagram accounts or posts and then seamlessly delivers them to designated Telegram channels or chats.
 
-## Table of Contents
+This is a Python script that copies new media from an Instagram account to a Telegram chat using the Telegram Bot API. 
 
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Features
-
-- **Instagram API Integration**: Securely access and retrieve media content from Instagram.
-- **Telegram Integration**: Send media content directly to Telegram channels or chats.
-- **Customizable Configuration**: Specify Instagram accounts or posts to monitor and Telegram destinations for media sharing.
-- **Automated Scheduling**: Set up automated schedules to fetch and share media at specific times.
-- **Media Filters**: Optionally filter media content based on keywords or hashtags.
-- **Logging and Error Handling**: Ensure reliable performance with detailed logging and robust error handling.
-
-## Getting Started
-
-### Prerequisites
+## Requirements
 
 - Python 3.x
-- Instagram API credentials (register your application with Instagram)
-- Telegram API settings (create a Telegram bot and obtain an API token)
+- Telegram bot token 
+- Telegram chat ID
+- Instaloader (`pip install instaloader`)
+- Requests (`pip install requests`)
 
-### Installation
+## Usage
 
-1. Clone the repository to your local machine:
+1. Clone this repository
 
-   ```bash
-   git clone https://github.com/yourusername/instagram-to-telegram.git
+2. Install dependencies:
+
+```
+pip install -r requirements.txt
+```
+
+3. Add your Telegram bot token and Telegram chat ID to the `.env` file
+
+4. Run `sender.py` to start the bot:
+
+```
+python sender.py
+```
+
+The script will monitor the `./{INSTA_USERNAME}` folder for new media files from the Instagram account and send them to Telegram automatically.
+
+`bot.py` contains the Instaloader logic to download new posts from a specified Instagram account. This runs on a loop to continually check for new media.
+
+Media types supported:
+
+- Images (JPG, PNG)
+- Videos (MP4)
+- Image captions (scraped from JSON metadata)
+
+New media is detected based on file modified time, so only newly downloaded files within the last 5 minutes will be sent.
+
+## Customization
+
+- Change the Instagram account username in `bot.py`
+- Adjust the time interval for detecting new files in `sender.py`
+
+## License
+
+This project is open source - Feel free to use it :)
