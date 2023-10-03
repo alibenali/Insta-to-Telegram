@@ -1,7 +1,5 @@
 # Instagram to Telegram Media Sender
 
-![Project Logo](https://independent.ng/wp-content/uploads/2017/12/Telegram-and-Instagram.jpg)
-
 Instagram to Telegram Media Sender is a Python-based tool that automates the process of sharing media content from Instagram to Telegram. This tool utilizes the Instagram API to fetch media (images and videos) from specified Instagram accounts or posts and then seamlessly delivers them to designated Telegram channels or chats.
 
 ## Table of Contents
